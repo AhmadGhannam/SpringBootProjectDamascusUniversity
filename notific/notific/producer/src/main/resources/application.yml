@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: producer
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    enabled: true
+
+
+server:
+  servlet:
+    context-path: /producer
+  port: 5000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    hostname: ${COMPUTERNAME}
+logging:
+  file:
+    name: C:\Users\Ahm\Desktop\Spring-Boot-Eureka-Discovery-Server-Spring-Boot-Gateway-Microservices-master\microservicethree

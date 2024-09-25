@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: consumer
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  zipkin:
+    base-url: http://localhost:9411
+    enabled: true
+    sleuth:
+      sampler:
+        probability: 1.0  # 100% sampling, adjust this as needed
+server:
+  servlet:
+    context-path: /consumer
+  port: 5001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true 
+    hostname: ${COMPUTERNAME}
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+
+logging:
+  file:
+    name: C:\Users\Ahm\Desktop\Spring-Boot-Eureka-Discovery-Server-Spring-Boot-Gateway-Microservices-master\microservicetwo
