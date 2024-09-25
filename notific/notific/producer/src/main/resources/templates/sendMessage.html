@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Message</title>
+</head>
+<body>
+<h1>Send Notification</h1>
+<form action="/service-three/send" method="post">
+    <label for="message">Enter your message:</label>
+    <input type="text" id="message" name="message" required>
+    <button type="submit">Send</button>
+</form>
+
+<div th:if="${confirmation}">
+    <p th:text="${confirmation}"></p>
+</div>
+</body>
+</html>

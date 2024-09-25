@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    export:
+      zipkin:
+        enabled: true
+        endpoint: http://localhost:9411/api/v2/spans
+
+  cloud:
+    gateway:
+      routes:
+        - id: login
+          uri: http://localhost:8081
+          predicates:
+            - Path=/auth/**
+        - id: station
+          uri: http://localhost:4443
+          predicates:
+            - Path=/station/**
+        - id: booking
+          uri: http://localhost:4446
+          predicates:
+            - Path=/bookings/**
+        - id: transit
+          uri: http://localhost:4445
+          predicates:
+            - Path=/transit/**
